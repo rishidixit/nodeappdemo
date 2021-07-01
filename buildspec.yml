@@ -1,10 +1,4 @@
 version: 0.2
-env:
-  secrets-manager:
-    LOGIN: dev/sonar:sonartoken
-    HOST: dev/sonar:HOST
-    Organization: dev/sonar:Organization
-    Project: dev/sonar:Project
 
 phases:
   install:
@@ -18,7 +12,7 @@ phases:
       - unzip ./sonar-scanner-cli-3.3.0.1492-linux.zip
       - export PATH=$PATH:/sonar-scanner-3.3.0.1492-linux/bin/     
       - npm install
-      - sonar-scanner -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
+      - sonar-scanner -Dsonar.login=60129f0555a60b9b818633e59250d3d6c185a8bd -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=nodeappdemo -Dsonar.organization=rishidixit
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
       - cat result.json  
